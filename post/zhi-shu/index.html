@@ -3,19 +3,17 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>质数 | Gridea</title>
-<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1633821028178">
+<link rel="shortcut icon" href="http://localhost:4001/favicon.ico?v=1633832186928">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="质数 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="stylesheet" href="http://localhost:4001/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="质数 | Gridea - Atom Feed" href="http://localhost:4001/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="线性筛
-线性筛就是让每一个合数都没ta的最小质因子筛掉，这样只会保证每个合数只会被筛掉一次，具体细节看代码……
-inline void Prime(int n){
-    int cnt = 0;
-    for(int i = 2 ; i..." />
+    <meta name="description" content="埃氏筛
+为了学区间筛还得被迫学一下埃氏筛……
+埃氏筛就是让一个素数（不一定是最小质因子）筛掉一个合数。其中有一个优化，设一个数kxkxkx其中kkk为正整数且k∈[1,x)k∈[1 , x)k∈[1,x)自然kx＜x2kx ＜ x^2kx＜..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -24,8 +22,8 @@ inline void Prime(int n){
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="https://functioncoder2006.github.io">
-  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1633821028178" alt="">
+  <a href="http://localhost:4001">
+  <img class="avatar" src="http://localhost:4001/images/avatar.png?v=1633832186928" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -85,14 +83,27 @@ inline void Prime(int n){
                 2021-10-09
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="线性筛">线性筛</h2>
+                <h2 id="埃氏筛">埃氏筛</h2>
+<p>为了学区间筛还得被迫学一下埃氏筛……<br>
+埃氏筛就是让一个素数（不一定是最小质因子）筛掉一个合数。其中有一个优化，设一个数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">kx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">x</span></span></span></span>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>为正整数且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>∈</mo><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">k∈[1 , x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>自然<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mi>x</mi><mi mathvariant="normal">＜</mi><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">kx ＜ x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">x</span><span class="mord cjk_fallback">＜</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>&lt;</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">k &lt; x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>所以比<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>小的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的倍数一定会被某一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>筛掉吗，所以我们直接从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>倍数开始筛</p>
+<pre><code class="language-cpp">inline void Prime(int n){
+    for(int i = 2 ; i &lt;= n ; ++i){
+        if(v[i])continue;//用一个质数去筛掉一个合数因为合数一定会有一个质因子
+        for(int j = i ; j &lt;= n / i ; ++j){//j从i开始枚举就意味着i * j &gt;= x * x
+            v[i * j] = true;
+        }
+    }
+    return;
+}
+</code></pre>
+<h2 id="线性筛">线性筛</h2>
 <p>线性筛就是让每一个合数都没ta的最小质因子筛掉，这样只会保证每个合数只会被筛掉一次，具体细节看代码……</p>
 <pre><code class="language-cpp">inline void Prime(int n){
     int cnt = 0;
@@ -138,6 +149,7 @@ inline void div(int n){
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
+<li><a href="#%E5%9F%83%E6%B0%8F%E7%AD%9B">埃氏筛</a></li>
 <li><a href="#%E7%BA%BF%E6%80%A7%E7%AD%9B">线性筛</a></li>
 <li><a href="#%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3">质因数分解</a></li>
 </ul>
@@ -152,7 +164,7 @@ inline void div(int n){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://functioncoder2006.github.io/post/noi2014-dong-wu-yuan-ti-jie/">
+            <a href="http://localhost:4001/post/noi2014-dong-wu-yuan-ti-jie/">
               <h3 class="post-title">
                 NOI2014动物园题解
               </h3>
@@ -164,7 +176,7 @@ inline void div(int n){
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
+  <a class="rss" href="http://localhost:4001/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>
