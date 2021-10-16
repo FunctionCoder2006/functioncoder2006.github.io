@@ -3,15 +3,16 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>2021.10.16模拟赛T1题解 | Gridea</title>
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1634393816627">
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1634394139180">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="2021.10.16模拟赛T1题解 | Gridea - Atom Feed" href="http://localhost:4000/atom.xml">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="2021.10.16模拟赛T1题解 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="这道题首先我写的dfsdfsdfs思路很简单就是每次覆盖区间时尝试着尽可能多地覆盖区间。这个我不太会证明……但是想了想大概是这样的可能也不太严谨：对于我要解决的这个区间[L,R][L,R][L,R]我每用一个线段时我都尝试着让tatata尽..." />
+    <meta name="description" content="
+这道题首先我写的dfsdfsdfs思路很简单就是每次覆盖区间时尝试着尽可能多地覆盖区间。这个我不太会证明……但是想了想大概是这样的可能也不太严谨：对于我要解决的这个区间[L,R][L,R][L,R]我每用一个线段时我都尝试着让tatata..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -20,8 +21,8 @@
     <div class="main">
       <div class="main-content">
         <div class="site-header">
-  <a href="http://localhost:4000">
-  <img class="avatar" src="http://localhost:4000/images/avatar.png?v=1634393816627" alt="">
+  <a href="https://functioncoder2006.github.io">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1634394139180" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -88,7 +89,8 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>这道题首先我写的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>思路很简单就是每次覆盖区间时尝试着尽可能多地覆盖区间。这个我不太会证明……但是想了想大概是这样的可能也不太严谨：对于我要解决的这个区间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[L,R]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">]</span></span></span></span>我每用一个线段时我都尝试着让<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span></span></span></span>尽可能多地覆盖区间，因为对于每一个元素，如果ta不被这个线段覆盖那ta就得被下一个线段覆盖。所以能让他被前面的区间覆盖就让前面的区间覆盖，后面的区间还省呢</p>
+                <!-- more -->
+<p>这道题首先我写的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>思路很简单就是每次覆盖区间时尝试着尽可能多地覆盖区间。这个我不太会证明……但是想了想大概是这样的可能也不太严谨：对于我要解决的这个区间<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[L,R]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mclose">]</span></span></span></span>我每用一个线段时我都尝试着让<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span></span></span></span>尽可能多地覆盖区间，因为对于每一个元素，如果ta不被这个线段覆盖那ta就得被下一个线段覆盖。所以能让他被前面的区间覆盖就让前面的区间覆盖，后面的区间还省呢</p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
@@ -231,7 +233,7 @@ int main(void){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="http://localhost:4000/post/zheng-chu-fen-kuai/">
+            <a href="https://functioncoder2006.github.io/post/zheng-chu-fen-kuai/">
               <h3 class="post-title">
                 整除分块
               </h3>
@@ -243,7 +245,7 @@ int main(void){
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
     <i class="ri-rss-line"></i> RSS
   </a>
 </div>
