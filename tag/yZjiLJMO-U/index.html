@@ -1,20 +1,17 @@
 <html>
   <head>
-    <meta charset="utf-8" />
+  <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>P3601 签到题题解 | Gridea</title>
+<title>欧拉函数 | Gridea</title>
 <link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1636598232293">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="P3601 签到题题解 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="欧拉函数 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="这道题首先转化qiaodaoqiaodaoqiaodao这个函数，很明显，111~nnn里的整数除去与nnn互质的数剩下的数就是与其不互质的数，故qiandao(i)qiandao(i)qiandao(i) = i−φ(i)i - φ(i)..." />
-    <meta name="keywords" content="筛法,欧拉函数" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <meta name="description" content="温故而知新" />
   </head>
   <body>
     <div class="main">
@@ -71,32 +68,37 @@
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              P3601 签到题题解
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-10-10
-              </span>
-              <span>
-                3 min read
-              </span>
-              
-                <a href="https://functioncoder2006.github.io/tag/uVzbDuvoi/" class="post-tag">
-                  # 筛法
-                </a>
-              
-                <a href="https://functioncoder2006.github.io/tag/yZjiLJMO-U/" class="post-tag">
-                  # 欧拉函数
-                </a>
-              
-            </div>
-            
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>这道题首先转化<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>i</mi><mi>a</mi><mi>o</mi><mi>d</mi><mi>a</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">qiaodao</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">i</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span></span></span></span>这个函数，很明显，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>里的整数除去与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>互质的数剩下的数就是与其不互质的数，故<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>d</mi><mi>a</mi><mi>o</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">qiandao(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">i</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mi>φ</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">i - φ(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
+        <div class="current-tag-container">
+            <h2 class="title">
+                标签：# 欧拉函数
+            </h2> 
+        </div>
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://functioncoder2006.github.io/post/p3601-qian-dao-ti-ti-jie/">
+        <h2 class="post-title">P3601 签到题题解</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2021-10-10
+        </span>
+        <span>
+          3 min read
+        </span>
+        
+          <a href="https://functioncoder2006.github.io/tag/uVzbDuvoi/" class="post-tag">
+            # 筛法
+          </a>
+        
+          <a href="https://functioncoder2006.github.io/tag/yZjiLJMO-U/" class="post-tag">
+            # 欧拉函数
+          </a>
+        
+      </div>
+      
+      <div class="post-abstract">
+        <p>这道题首先转化<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>i</mi><mi>a</mi><mi>o</mi><mi>d</mi><mi>a</mi><mi>o</mi></mrow><annotation encoding="application/x-tex">qiaodao</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">i</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span></span></span></span>这个函数，很明显，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>里的整数除去与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>互质的数剩下的数就是与其不互质的数，故<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>q</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>d</mi><mi>a</mi><mi>o</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">qiandao(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">i</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">a</span><span class="mord mathdefault">o</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span> = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>−</mo><mi>φ</mi><mo>(</mo><mi>i</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">i - φ(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">φ</span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mclose">)</span></span></span></span></p>
 <p>然后我们考虑区间筛然后求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>φ</mi></mrow><annotation encoding="application/x-tex">φ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">φ</span></span></span></span></p>
 <p>几个坑点：</p>
 <p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1.</mn></mrow><annotation encoding="application/x-tex">1.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">.</span></span></span></span>我们区间筛的时候筛的是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>~<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mi>R</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.11333499999999996em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9266650000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span><span style="top:-2.886665em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
@@ -181,33 +183,17 @@ signed main(void){
     }
 
     cout &lt;&lt; res &lt;&lt; endl;
-&lt;!-- more --&gt;
-
-
-    return 0;
-}
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                
-              </div>
-            </div>
-          </article>
-        </div>
+      </div>
+    </article>
+  
+</div>
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://functioncoder2006.github.io/post/ou-la-han-shu/">
-              <h3 class="post-title">
-                欧拉函数
-              </h3>
-            </a>
-          </div>
-        
-
-        
+        <div class="pagination-container">
+  
+  
+</div>
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
@@ -218,46 +204,5 @@ signed main(void){
 
       </div>
     </div>
-
-    <script>
-      hljs.initHighlightingOnLoad()
-
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
-
-    </script>
   </body>
 </html>
