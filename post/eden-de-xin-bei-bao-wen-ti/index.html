@@ -2,22 +2,21 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>排兵布阵题解 | Gridea</title>
-<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1636704878286">
+<title>Eden的新背包问题 | Gridea</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1636906413095">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="排兵布阵题解 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Eden的新背包问题 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="分组背包
-额外需要注意的是预处理每一个组的“物品”的代价， 有一些状态是冗余的。
+    <meta name="description" content="单调队列优化多重背包，做一遍前缀背包和后缀背包，每一次询问考虑分配体积，合并正反背包
 #include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
-#incl..." />
-    <meta name="keywords" content="背包,动态规划" />
+#in..." />
+    <meta name="keywords" content="单调队列,背包,动态规划" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -26,7 +25,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://functioncoder2006.github.io">
-  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1636704878286" alt="">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1636906413095" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -79,15 +78,19 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              排兵布阵题解
+              Eden的新背包问题
             </h2>
             <div class="post-info">
               <span>
-                2021-11-11
+                2021-11-14
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
+              
+                <a href="https://functioncoder2006.github.io/tag/4PN6mwQvy/" class="post-tag">
+                  # 单调队列
+                </a>
               
                 <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
                   # 背包
@@ -101,8 +104,7 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>分组背包</p>
-<p>额外需要注意的是预处理每一个组的“物品”的代价， 有一些状态是冗余的。</p>
+                <p>单调队列优化多重背包，做一遍前缀背包和后缀背包，每一次询问考虑分配体积，合并正反背包</p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
@@ -111,44 +113,88 @@
 
 using namespace std;
 
-const int N = 110;
-const int M = 2e4 + 10;
+const int N = 1e3 + 10;
+const int m = 1000;
 
-int s , n , m , a[N][N] , c[N][N];
-int f[M];
+int n , w[N] , v[N] , s[N] , q[N] , f[N][N] , g[N][N];
+int Q , x , V;
+
+inline int du(void){
+    int x = 0 , f = 1;
+    char ch = getchar();
+    while(ch &gt; '9' || ch &lt; '0'){if(ch == '-')f = -1;ch = getchar();}
+    while(ch &gt;= '0' &amp;&amp; ch &lt;= '9'){x = x * 10 + ch - '0';ch = getchar();}
+    return x * f;
+}
+inline void write(int x){
+    if(x &lt; 0){putchar('-');x = -x;}
+    if(x &gt; 9)write(x / 10);
+    putchar(x % 10 ^ 48);
+    return;
+}
+
+inline int solve(int i , int u , int k){
+    return f[i - 1][u + k * w[i]] - k * v[i];
+}
+inline int calc(int i , int u , int k){
+    return g[i + 1][u + k * w[i]] - k * v[i];
+}
 
 int main(void){
-    
-    scanf(&quot;%d%d%d&quot; , &amp;s , &amp;n , &amp;m);
 
-    for(int i = 1 ; i &lt;= s ; ++ i){
-        for(int j = 1 ; j &lt;= n ; ++ j){
-            scanf(&quot;%d&quot; , &amp;a[i][j]);
-            c[j][i] = a[i][j];
-        }
+    n = du();
+
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        w[i] = du() , v[i] = du() , s[i] = du();
     }
 
     for(int i = 1 ; i &lt;= n ; ++ i){
-        sort(c[i] + 1 , c[i] + 1 + s);
-        for(int j = 1 ; j &lt;= s ; ++ j){
-            c[i][j] &lt;&lt;= 1;
-            c[i][j] ++;
-        }
-    }
-
-    for(int i = 1 ; i &lt;= n ; ++ i){
-        for(int j = m ; j &gt;= 0 ; -- j){
-            for(int k = 0 ; k &lt;= s ; ++ k){
-                if(c[i][k] &gt; j)break;
-                f[j] = max(f[j] , f[j - c[i][k]] + k * i);
+        int Len = s[i];
+        if(m / w[i] &lt; s[i])Len = m / w[i];  
+        for(int u = 0 ; u &lt; w[i] ; ++ u){
+            int hh = 1 , tt = 0;
+            for(int k = 0 ; k &lt;= (m - u) / w[i] ; ++ k){
+                while(hh &lt;= tt &amp;&amp; solve(i , u , q[tt]) &lt;= solve(i , u , k))
+                    -- tt;
+                while(hh &lt;= tt &amp;&amp; q[hh] &lt; k - Len)
+                    ++ hh;
+                q[++ tt] = k;
+                f[i][u + k * w[i]] = solve(i , u , q[hh]) + k * v[i];
             }
         }
     }
 
-    printf(&quot;%d&quot; , f[m]);
+    for(int i = n ; i &gt;= 1 ; -- i){
+        int Len = s[i]; 
+        if(m / w[i] &lt; s[i])Len = m / w[i];
+        for(int u = 0 ; u &lt; w[i] ; ++ u){
+            int hh = 1 , tt = 0;
+            for(int k = 0 ; k &lt;= (m - u) / w[i] ; ++ k){
+                while(hh &lt;= tt &amp;&amp; calc(i , u , q[tt]) &lt;= calc(i , u , k))
+                    -- tt;
+                while(hh &lt;= tt &amp;&amp; q[hh] &lt; k - Len)
+                    ++ hh;
+                q[++ tt] = k;
+                g[i][u + k * w[i]] = calc(i , u , q[hh]) + k * v[i];
+            }
+        }
+    }
+
+    Q = du();
+
+    while(Q -- ){
+        x = du() , V = du();
+        ++ x;
+        int ans = 0;
+        for(int k = 0 ; k &lt;= V ; ++ k){
+            ans = max(ans , f[x - 1][k] + g[x + 1][V - k]);
+        }
+        write(ans) , putchar('\n');
+    }
 
     return 0;
 
+    
 }
 </code></pre>
 
@@ -163,9 +209,9 @@ int main(void){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://functioncoder2006.github.io/post/niu-ke-oi-zhou-sai-15-san-jiao-xing/">
+            <a href="https://functioncoder2006.github.io/post/hong-shou-ti-jie/">
               <h3 class="post-title">
-                牛客OI周赛15三角形
+                触手题解
               </h3>
             </a>
           </div>
