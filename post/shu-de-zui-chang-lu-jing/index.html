@@ -1,0 +1,381 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>树的最长路径 | Gridea</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637110302527">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="树的最长路径 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="考虑到最长路径会中转某一个节点 uuu 那么中转点为 uuu 的最长路径是 d1+d2d1 + d2d1+d2 也就是子节点到 uuu 的最长路径和次长路径之和
+#include&lt;iostream&gt;
+#include&lt;cs..." />
+    <meta name="keywords" content="树的直径,树形dp,动态规划" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://functioncoder2006.github.io">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1637110302527" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              树的最长路径
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-15
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://functioncoder2006.github.io/tag/kYOYMt1YJ/" class="post-tag">
+                  # 树的直径
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
+                  # 树形dp
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
+                  # 动态规划
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>考虑到最长路径会中转某一个节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 那么中转点为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mn>1</mn><mo>+</mo><mi>d</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">d1 + d2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord">2</span></span></span></span> 也就是子节点到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径和次长路径之和</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int n , ans , f[N] , d[N];
+
+int head[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , w[N &lt;&lt; 1] , idx;
+inline void add(int x , int y , int z){
+    ver[idx] = y , w[idx] = z;
+    nx[idx] = head[x] , head[x] = idx ++ ;
+    return;
+}
+
+inline void dfs(int u , int fa){
+    int d1 = 0 , d2 = 0;
+    for(int i = head[u] ; ~i ; i = nx[i]){
+        int v = ver[i];
+        if(v == fa)continue;
+        dfs(v , u);
+        if(f[v] + w[i] &gt;= d1){
+            d2 = d1;
+            d1 = f[v] + w[i];
+        }
+        else if(f[v] + w[i] &gt; d2){
+            d2 = f[v] + w[i];
+        }
+    }
+    f[u] = d1 , ans = max(ans , d1 + d2);
+    return;
+}
+
+int main(void){
+
+    scanf(&quot;%d&quot; , &amp;n);
+
+    int x , y , z;
+
+    memset(head , -1 , sizeof(head));
+
+    for(int i = 1 ; i &lt; n ; ++ i){
+        scanf(&quot;%d%d%d&quot; , &amp;x , &amp;y , &amp;z);
+        add(x , y , z);
+        add(y , x , z);
+    }
+
+    dfs(1 , -1);
+
+    printf(&quot;%d&quot; , ans);
+
+    return 0;
+
+}
+</code></pre>
+<p>还有一种写法，其实也是求最长和次长，只是不是很明显，但是一定覆盖了最长 + 次长这种情况</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int n , ans , f[N] , d[N];
+
+int head[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , w[N &lt;&lt; 1] , idx;
+inline void add(int x , int y , int z){
+    ver[idx] = y , w[idx] = z;
+    nx[idx] = head[x] , head[x] = idx ++ ;
+    return;
+}
+
+inline void dfs(int u , int fa){
+    for(int i = head[u] ; ~i ; i = nx[i]){
+        int v = ver[i];
+        if(v == fa)continue;
+        dfs(v , u);
+        ans = max(ans , d[u] + d[v] + w[i]);
+        d[u] = max(d[u] , d[v] + w[i]);
+    }
+    return;
+}
+
+int main(void){
+
+    scanf(&quot;%d&quot; , &amp;n);
+
+    int x , y , z;
+
+    memset(head , -1 , sizeof(head));
+
+    for(int i = 1 ; i &lt; n ; ++ i){
+        scanf(&quot;%d%d%d&quot; , &amp;x , &amp;y , &amp;z);
+        add(x , y , z);
+        add(y , x , z);
+    }
+
+    dfs(1 , -1);
+
+    printf(&quot;%d&quot; , ans);
+
+    return 0;
+
+}
+</code></pre>
+<p>还有一种做法就是两次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span> ，先随便选一个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span>，找到离 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span></span></span></span> 最远的点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，然后再从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 开始 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span> 找到离 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 最远的点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> ，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>−</mo><mo>&gt;</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u-&gt;v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">u</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 便是最长路径</p>
+<p>证明：https://zhuanlan.zhihu.com/p/115966044?from_voters_page=true</p>
+<p>大体上就是证明 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 一定在直径的端点，然后从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 开始跑 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">bfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span> 求出来的最大 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">d_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 就一定是直径</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+const int N = 1e5 + 10;
+
+int n , pre[N] , d[N];
+bool st[N];
+
+int head[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , w[N &lt;&lt; 1] , idx;
+inline void add(int x , int y , int z){
+    ver[idx] = y , w[idx] = z;
+    nx[idx] = head[x] , head[x] = idx ++ ;
+    return;
+}
+
+queue&lt;int&gt; que;
+vector&lt;int&gt; path;
+
+inline int get_max(void){
+    int t = -1 , maxn = 0;
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        if(d[i] &gt; maxn){
+            maxn = d[i];
+            t = i;
+        }
+    }
+    return t;
+}
+
+inline void bfs(int start){
+
+    d[start] = 0;
+    memset(pre , -1 , sizeof(pre));
+    memset(st , false , sizeof(st));
+    que.push(start);
+    st[start] = true;
+
+    while(que.size()){
+        int u = que.front(); que.pop();
+        for(int i = head[u] ; ~i ; i = nx[i]){
+            int v = ver[i];
+            if(st[v])continue;
+            d[v] = d[u] + w[i];
+            pre[v] = u;
+            st[v] = true;
+            que.push(v);
+        }
+    }
+
+    return;
+
+}
+
+int main(void){
+
+    scanf(&quot;%d&quot; , &amp;n);
+    
+    int x , y , z;
+    
+    memset(head , -1 , sizeof(head));
+
+    for(int i = 1 ; i &lt; n ; ++ i){
+        scanf(&quot;%d%d%d&quot; , &amp;x , &amp;y , &amp;z);
+        add(x , y , z);
+        add(y , x , z);
+    }
+
+    bfs(1);
+
+    int u = get_max();
+
+    bfs(u);
+
+    int v = get_max();
+
+    printf(&quot;%d&quot; , d[v]);
+
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://functioncoder2006.github.io/post/fei-yang-de-xiao-niao/">
+              <h3 class="post-title">
+                飞扬的小鸟
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
