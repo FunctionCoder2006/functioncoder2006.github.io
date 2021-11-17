@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>三色二叉树题解 | Gridea</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637132346624">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="三色二叉树题解 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="这道题 dpdpdp 部分不难，但是建树部分把我卡了好一会儿……
+首先说建树，我以为两个子树序列最终都会以 000 结尾，但是不是这样的
+我没想到的是可以从先序遍历（dfsdfsdfs 序）入手，因为我们发现，我们遍历到了根节点马上就该左节..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://functioncoder2006.github.io">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1637132346624" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              三色二叉树题解
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-17
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这道题 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span></span></span></span> 部分不难，但是建树部分把我卡了好一会儿……</p>
+<p>首先说建树，我以为两个子树序列最终都会以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 结尾，但是不是这样的</p>
+<p>我没想到的是可以从先序遍历（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span> 序）入手，因为我们发现，我们遍历到了根节点马上就该左节点，左节点遍历完了再到右节点，这就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">s</span></span></span></span> 序</p>
+<p>而我们发现，右节点的编号是左子树最后一个节点编号 + 1，因此，对于是“2”的情况，可以先考虑将左子树递归求编号，然后再对右子树进行递归操作</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span></span></span></span> 部分很简单，不说了</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;      
+#include&lt;cstdio&gt;        
+#include&lt;algorithm&gt;     
+#include&lt;cstring&gt;       
+#include&lt;cmath&gt;     
+
+using namespace std;    
+
+const int N = 5e5 + 10; 
+
+char str[N];    
+int n , idx , L[N] , R[N] , id[N];  
+int f[N][4] , g[N][4];  
+//0 红色 1 绿色 2 蓝色  
+
+inline void build(int state){   
+    id[state] = ++ idx;     
+    if(str[state] == '0')return;  
+    if(str[state] == '1'){    
+        build(state + 1);   
+        L[id[state]] = id[state + 1];   
+    }   
+    if(str[state] == '2'){
+        build(state + 1);   
+        L[id[state]] = id[state + 1];   
+        int reward = idx + 1;
+        build(idx + 1);     
+        R[id[state]] = id[reward];     
+    }   
+    return;     
+}   
+
+inline void dfs(int u){
+   // cout &lt;&lt; u &lt;&lt; endl;
+    if(L[u]){
+        dfs(L[u]);//这里吧L[u] 写成了 !L[u]，调了好久……
+    }
+    if(R[u]){
+        dfs(R[u]); 
+    }
+    f[u][0] = max(f[L[u]][1] + f[R[u]][2] , f[L[u]][2] + f[R[u]][1]);
+    f[u][1] = max(f[L[u]][0] + f[R[u]][2] , f[L[u]][2] + f[R[u]][0]) + 1;
+    f[u][2] = max(f[L[u]][0] + f[R[u]][1] , f[L[u]][1] + f[R[u]][0]);
+
+    g[u][0] = min(g[L[u]][1] + g[R[u]][2] , g[L[u]][2] + g[R[u]][1]);
+    g[u][1] = min(g[L[u]][0] + g[R[u]][2] , g[L[u]][2] + g[R[u]][0]) + 1;
+    g[u][2] = min(g[L[u]][0] + g[R[u]][1] , g[L[u]][1] + g[R[u]][0]);
+    return;
+}
+
+int main(void){
+
+    scanf(&quot;%s&quot; , str + 1);
+
+    n = strlen(str + 1);
+
+    build(1);
+
+    dfs(1);
+
+  /*  for(int i = 1 ; i &lt;= n ; ++ i){
+        cout &lt;&lt; L[i] &lt;&lt; &quot; &quot; &lt;&lt; R[i] &lt;&lt; &quot; &quot; &lt;&lt; endl;
+    }
+
+    */
+   // 所有以u为子树，其中u染0号颜色的染色方案中最多能染多少绿色
+   
+   cout &lt;&lt; max(f[1][0] , max(f[1][1] , f[1][2])) &lt;&lt; &quot; &quot; &lt;&lt; min(g[1][0] , min(g[1][1] , g[1][2])) &lt;&lt; endl;
+
+
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://functioncoder2006.github.io/post/ran-se-ji-shu/">
+              <h3 class="post-title">
+                染色计数
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

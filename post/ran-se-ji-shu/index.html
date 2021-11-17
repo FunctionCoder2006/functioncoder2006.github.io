@@ -1,0 +1,260 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>染色计数 | Gridea</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637132346624">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="染色计数 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="考虑到父子节点颜色不能相等，设 fu,jf_{u , j}fu,j​ 表示以 uuu 为子树，所有 uuu 染了 jjj 颜色的方案，因此，有
+fu,j=∏v∈Son(u)(∑i=1mfv,k×[j≠k])f_{u , j} =\prod_..." />
+    <meta name="keywords" content="前缀和,树形dp,动态规划" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://functioncoder2006.github.io">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1637132346624" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              染色计数
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-17
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag">
+                  # 前缀和
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
+                  # 树形dp
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
+                  # 动态规划
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>考虑到父子节点颜色不能相等，设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi>u</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">f_{u , j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> 表示以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 为子树，所有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 染了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 颜色的方案，因此，有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi>u</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>=</mo><munder><mo>∏</mo><mrow><mi>v</mi><mo>∈</mo><mi>S</mi><mi>o</mi><mi>n</mi><mo>(</mo><mi>u</mi><mo>)</mo></mrow></munder><mo>(</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msub><mi>f</mi><mrow><mi>v</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>×</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">≠</mi><mi>k</mi><mo>]</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">f_{u , j} =\prod_{v ∈ Son(u)}( \sum_{i = 1}^{m} f_{v , k}×[j≠k])
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.167402em;vertical-align:-1.516005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.808995em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">n</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">u</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.516005em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中我们可以将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></msubsup><msub><mi>f</mi><mrow><mi>v</mi><mo separator="true">,</mo><mi>k</mi></mrow></msub><mo>×</mo><mo>[</mo><mi>j</mi><mi mathvariant="normal">≠</mi><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">\sum_{i = 1}^{m} f_{v , k}×[j≠k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 进行<strong>前缀和优化</strong>，可以化为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>m</mi><mi>v</mi></msub><mo>−</mo><msub><mi>f</mi><mrow><mi>v</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">sum_v - f_{v , j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，其中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><msub><mi>m</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">sum_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">u</span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 为子树的所有染色方案，<strong>减去不合法的方案，就是合法的方案</strong>，有一点点容斥的意思</p>
+<p>别的没什么好说的</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+
+using namespace std;
+
+const int N = 5010;
+const int mod = 1e9 + 7;
+
+inline int du(void){
+    int x = 0 , f = 1;
+    char ch = getchar();
+    while(ch &gt; '9' || ch &lt; '0'){if(ch == '-')f = -1;ch = getchar();}
+    while(ch &gt;= '0' &amp;&amp; ch &lt;= '9'){x = x * 10 + ch - '0';ch = getchar();}
+    return x * f;
+}
+inline void write(int x){
+    if(x &lt; 0){putchar('-');x = -x;}
+    if(x &gt; 9)write(x / 10);
+    putchar(x % 10 ^ 48);
+    return;
+}
+
+int n , m , f[N][N] , sum[N];
+
+int head[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , idx;
+inline void add(int x , int y){
+    ver[idx] = y;
+    nx[idx] = head[x] , head[x] = idx ++ ;
+    return;
+}
+
+inline void dfs(int u , int fa){
+    for(int i = head[u] ; ~i ; i = nx[i]){
+        int v = ver[i];
+        if(v == fa)continue;
+        dfs(v , u);
+        for(int j = 1 ; j &lt;= m ; ++ j){
+            f[u][j] = (1ll * f[u][j] * ((sum[v] - f[v][j] + mod) % mod)) % mod;
+        }
+    }
+    for(int i = 1 ; i &lt;= m ; ++ i){
+        sum[u] = (sum[u] + f[u][i]) % mod;
+    }
+    return; 
+}
+
+int main(void){
+
+    n = du() , m = du();
+
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        int k , c;
+        k = du();
+        for(int j = 1 ; j &lt;= k ; ++ j){
+            c = du();
+            f[i][c] = 1;
+        }
+    }   
+
+    memset(head , -1 , sizeof(head));
+
+    for(int i = 1 ; i &lt; n ; ++ i){
+        int x , y;
+        x = du() , y = du();
+        add(x , y);
+        add(y , x);
+    }
+
+    dfs(1 , -1);
+
+    write(sum[1] % mod);
+
+    return 0;
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://functioncoder2006.github.io/post/shu-shang-ran-se-ti-jie/">
+              <h3 class="post-title">
+                树上染色题解
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
