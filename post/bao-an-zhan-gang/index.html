@@ -1,0 +1,285 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>保安站岗 | Gridea</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637330238047">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="保安站岗 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="战略游戏的加强版
+对于一个节点 uuu，先考虑放还是不放
+如果 uuu 放的话，那么子节点可能放，也可能不放
+如果 uuu 不放的话，那么 uuu 就需要考虑是被父节点覆盖还是被子节点覆盖，如果被父节点覆盖的话，那么子节点有可能放也有可能不..." />
+    <meta name="keywords" content="树形dp,动态规划" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://functioncoder2006.github.io">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1637330238047" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              保安站岗
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-18
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
+                  # 树形dp
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
+                  # 动态规划
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>战略游戏的加强版</p>
+<p>对于一个节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，<strong>先考虑放还是不放</strong></p>
+<p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 放的话，那么子节点可能放，也可能不放</p>
+<p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 不放的话，<strong>那么 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 就需要考虑是被父节点覆盖还是被子节点覆盖</strong>，如果被父节点覆盖的话，那么子节点有可能放也有可能不放；如果没有被父节点覆盖掉，那就需要被至少一个子节点覆盖掉</p>
+<p>设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi>u</mi><mo separator="true">,</mo><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">f_{u , 0/1 , 0/1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04964em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mord mtight">/</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mord mtight">/</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span></span></span></span> 表示所有以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 为子树，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 放/不放、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的父节点有没有放</p>
+<p>转移方程也就很简单了，但是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">ta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span></span></span></span> 的父亲都没有放这种情况我们需要特别说一下，因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 至少要被一个子节点覆盖掉，所以我们可以顷定一个点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 不选，剩下的取选和不选情况的最大值，故有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mrow><mi>u</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn></mrow></msub><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><msub><mi>q</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>h</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>f</mi><mrow><mi>v</mi><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">f_{u , 0 , 0} = min(q_{i - 1} + h_{i + 1} + f_{v , 1 , 0})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.902771em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>这里用到了类似 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>d</mi><mi>e</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">Eden</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span></span></span></span> 的新背包那道题的操作，前后缀 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span> 合并</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>q</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">q_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>i</mi></msubsup><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><msub><mi>f</mi><mrow><mi>j</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn></mrow></msub><mo separator="true">,</mo><msub><mi>f</mi><mrow><mi>j</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{j = 1}^{i} min(f_{j , 0 , 0} , f_{j , 0 , 1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.400382em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.964564em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mi>i</mi></mrow><mrow><mi>s</mi><mi>u</mi><mi>b</mi><mo>[</mo><mi>u</mi><mo>]</mo></mrow></msubsup><mi>m</mi><mi>i</mi><mi>n</mi><mo>(</mo><msub><mi>f</mi><mrow><mi>j</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn></mrow></msub><mo separator="true">,</mo><msub><mi>f</mi><mrow><mi>j</mi><mo separator="true">,</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">\sum_{j = i}^{sub[u]} min(f_{j , 0 , 0} , f_{j , 0 , 1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.463718em;vertical-align:-0.43581800000000004em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0279em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight">b</span><span class="mopen mtight">[</span><span class="mord mathdefault mtight">u</span><span class="mclose mtight">]</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.43581800000000004em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span><span class="mpunct mtight">,</span><span class="mord mtight">0</span><span class="mpunct mtight">,</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+const int N = 5e5 + 10;
+
+int n , f[N][2][2];
+
+int head[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , idx , c[N &lt;&lt; 1];
+inline void add(int x , int y){
+    ver[idx] = y;
+    nx[idx] = head[x] , head[x] = idx ++;
+    return;
+}
+
+inline void dfs(int u , int fa){    
+    vector&lt;int&gt; vec;
+    vector&lt;int&gt; q;
+    vector&lt;int&gt; h;
+    int qmin = 0 , hmin = 0;
+    f[u][1][0] = f[u][1][1] = c[u];
+    for(int i = head[u] ; ~i ; i = nx[i]){
+        int v = ver[i];
+        if(v == fa)continue;
+        dfs(v , u);
+        f[u][1][0] += min(f[v][1][1] , f[v][0][1]);
+        f[u][1][1] += min(f[v][1][1] , f[v][0][1]);
+        f[u][0][1] += min(f[v][0][0] , f[v][1][0]);
+        vec.push_back(v);   
+    }       
+    for(int i = 0 ; i &lt; vec.size() ; ++ i){         
+        int v = vec[i];     
+        qmin += min(f[v][1][0] , f[v][0][0]);           
+        q.push_back(qmin);      
+    }       
+    int Size = vec.size();
+    for(int i = Size - 1 ; i &gt;= 0 ; -- i){      
+        int v = vec[i];     
+        hmin += min(f[v][1][0] , f[v][0][0]);       
+        h.push_back(hmin);      
+    }       
+
+    reverse(h.begin() , h.end());       
+
+    int tmp = (1 &lt;&lt; 20);        
+
+    for(int i = 0 ; i &lt; vec.size() ; ++ i){     
+        int v = vec[i];     
+        if(vec.size() == 1){            
+            tmp = f[v][1][0];       
+            break;      
+        }       
+        if(i == 0){     
+            tmp = min(tmp , h[i + 1] + f[v][1][0]);     
+        }   
+        else if(i == vec.size() - 1){   
+            tmp = min(tmp , q[i - 1] + f[v][1][0]);     
+        }
+        else {
+            tmp = min(tmp , q[i - 1] + h[i + 1] + f[v][1][0]);
+        }
+    }
+
+    f[u][0][0] = tmp;
+
+    return;
+}
+
+int main(void){
+
+    scanf(&quot;%d&quot; , &amp;n);
+
+    memset(head , -1 , sizeof(head));
+
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        int id , k , m , x;
+        scanf(&quot;%d%d%d&quot; , &amp;id , &amp;k , &amp;m);
+        c[id] = k;
+        for(int j = 1 ; j &lt;= m ; ++ j){
+            scanf(&quot;%d&quot; , &amp;x);
+            add(id , x);
+            add(x , id);
+        }
+    }
+
+    dfs(1 , -1);
+
+    printf(&quot;%d&quot; , min(f[1][0][0] , f[1][1][0]));
+
+    return 0;
+
+}
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://functioncoder2006.github.io/post/shu-zi-zhuan-huan-ti-jie/">
+              <h3 class="post-title">
+                数字转换题解
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

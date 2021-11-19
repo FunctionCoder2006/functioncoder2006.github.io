@@ -2,20 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>二叉苹果树 | Gridea</title>
+<title>淘淘吃苹果 | Gridea</title>
 <link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637330238047">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="二叉苹果树 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="淘淘吃苹果 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="这道题当时磨蹭了半天原因是被一些特判（t=0/j=0t = 0/j = 0t=0/j=0）绊住了，后来发现读错题了……
-其实和选课也差不多，有些细节还是需要稍加注意
-#include&lt;iostream&gt;
-#include&lt;..." />
-    <meta name="keywords" content="树形dp,背包,动态规划" />
+    <meta name="description" content="这道题含含糊糊的，暂时跳过
+" />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -77,94 +75,21 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              二叉苹果树
+              淘淘吃苹果
             </h2>
             <div class="post-info">
               <span>
-                2021-11-15
+                2021-11-19
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
-              
-                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-                  # 树形dp
-                </a>
-              
-                <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
-                  # 背包
-                </a>
-              
-                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-                  # 动态规划
-                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>这道题当时磨蹭了半天原因是被一些特判（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn><mi mathvariant="normal">/</mi><mi>j</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t = 0/j = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">/</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>）绊住了，后来发现读错题了……</p>
-<p>其实和选课也差不多，有些细节还是需要稍加注意</p>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cstring&gt;
-#include&lt;cmath&gt;
-
-using namespace std;
-
-const int N = 550;
-
-int n , m , siz[N] , f[N][N];
-
-int head[N &lt;&lt; 1] , nx[N &lt;&lt; 1] , ver[N &lt;&lt; 1] , w[N &lt;&lt; 1] , idx;
-inline void add(int x , int y , int z){
-    ver[idx] = y , w[idx] = z;
-    nx[idx] = head[x] , head[x] = idx ++ ;
-    return;
-}
-
-inline void dfs(int u , int fa){
-    siz[u] = 1 , f[u][0] = 0;
-    for(int i = head[u] ; ~i ; i = nx[i]){
-        int v = ver[i];
-        if(v == fa)continue;
-        dfs(v , u);
-        siz[u] += siz[v];
-        for(int j = min(m , siz[u] - 1) ; j &gt;= 1 ; -- j){
-            for(int t = min(j , siz[v]) ; t &gt;= 1 ; -- t){
-                f[u][j] = max(f[u][j] , f[u][j - t] + f[v][t - 1] + w[i]);
-            }
-        }
-    }
-
-    return;
-
-}
-
-int main(void){
-    
-    scanf(&quot;%d%d&quot; , &amp;n , &amp;m);
-    
-    memset(head , -1 , sizeof(head));
-
- //   memset(f , ~0x3f , sizeof(f));
-
-    for(int i = 1 ; i &lt; n ; ++ i){
-        int x , y , z;
-        scanf(&quot;%d%d%d&quot; , &amp;x , &amp;y , &amp;z);
-        add(x , y , z);
-        add(y , x , z);
-    }
-
-    dfs(1 , -1);
-
-    printf(&quot;%d&quot; , f[1][m]);
-
-    return 0;
-
-}
-</code></pre>
+                <p>这道题含含糊糊的，暂时跳过</p>
 
               </div>
               <div class="toc-container">
@@ -177,9 +102,9 @@ int main(void){
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://functioncoder2006.github.io/post/barn-painting-ti-jie/">
+            <a href="https://functioncoder2006.github.io/post/bao-an-zhan-gang/">
               <h3 class="post-title">
-                Barn Painting题解
+                保安站岗
               </h3>
             </a>
           </div>
