@@ -1,17 +1,22 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>树形dp | Gridea</title>
+<title>贪吃的九头龙 | Gridea</title>
 <link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637911153780">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="树形dp | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="贪吃的九头龙 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-  <meta name="description" content="温故而知新" />
+    <meta name="description" content="这是一道好题
+首先我们可以发现，难受的一定是大头，因为只需要两个小头交替着吃就不会产生难受值
+考虑到大头 恰好 吃掉 kkk 个果子，我们将 jjj 表示大头恰好吃掉了 jjj 个果子记入状态里面。因为有些状态是不合法的，应该将 dpdpd..." />
+    <meta name="keywords" content="树形dp,动态规划" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
     <div class="main">
@@ -68,37 +73,32 @@
   </div>
 </div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：# 树形dp
-            </h2> 
-        </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/tan-chi-de-jiu-tou-long/">
-        <h2 class="post-title">贪吃的九头龙</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-26
-        </span>
-        <span>
-          7 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        <p>这是一道好题</p>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              贪吃的九头龙
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-11-26
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
+                  # 树形dp
+                </a>
+              
+                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
+                  # 动态规划
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这是一道好题</p>
 <p>首先我们可以发现，<strong>难受的一定是大头</strong>，因为只需要两个小头交替着吃就不会产生难受值</p>
 <p>考虑到大头 <strong>恰好</strong> 吃掉 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个果子，我们将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 表示大头<strong>恰好吃掉了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 个果子</strong>记入状态里面。因为有些状态是不合法的，应该将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span></span></span></span> 数组<strong>初始化成正无穷</strong></p>
 <p>因为我们需要父子节点都被大头吃掉才会难受，所以我们在状态里面记录 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">0/1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mord">/</span><span class="mord">1</span></span></span></span> 表示这个节点是否被大头吃掉</p>
@@ -257,281 +257,28 @@ int main(void){
 }
 </code></pre>
 <p>另外，<strong>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 被大头吃掉了，要注意子节点大头最多吃 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个果子</strong></p>
+<!-- more -->
 
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/nearby-cows-g/">
-        <h2 class="post-title">Nearby Cows G</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-25
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/tkN9WuSwu/" class="post-tag">
-            # 容斥
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/zhong-shan-shi-xuan-2009shu/">
-        <h2 class="post-title">[中山市选2009]树</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-24
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/bao-an-zhan-gang/">
-        <h2 class="post-title">保安站岗</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-18
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/shu-zi-zhuan-huan-ti-jie/">
-        <h2 class="post-title">数字转换题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/kYOYMt1YJ/" class="post-tag">
-            # 树的直径
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">
-        <h2 class="post-title">三色二叉树题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/ran-se-ji-shu/">
-        <h2 class="post-title">染色计数</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag">
-            # 前缀和
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/shu-shang-ran-se-ti-jie/">
-        <h2 class="post-title">树上染色题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/er-cha-ping-guo-shu/">
-        <h2 class="post-title">二叉苹果树</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-15
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
-            # 背包
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/you-xian-dian-shi-wang/">
-        <h2 class="post-title">有线电视网</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-15
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
-            # 背包
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-</div>
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
 
-        <div class="pagination-container">
-  
-  
-    <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/page/2" class="next-page">下一页</a>
-  
-</div>
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://functioncoder2006.github.io/post/nearby-cows-g/">
+              <h3 class="post-title">
+                Nearby Cows G
+              </h3>
+            </a>
+          </div>
+        
+
+        
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
@@ -542,5 +289,46 @@ int main(void){
 
       </div>
     </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>
