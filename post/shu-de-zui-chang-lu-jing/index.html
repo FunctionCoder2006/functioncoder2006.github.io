@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>树的最长路径 | Gridea</title>
-<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1637911153780">
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1638189393366">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="树的最长路径 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
@@ -11,9 +11,9 @@
 
 
 
-    <meta name="description" content="考虑到最长路径会中转某一个节点 uuu 那么中转点为 uuu 的最长路径是 d1+d2d1 + d2d1+d2 也就是子节点到 uuu 的最长路径和次长路径之和
+    <meta name="description" content="考虑到 最长路径一定会中转某一个节点 uuu 那么中转点为 uuu 的最长路径是 d1+d2d1 + d2d1+d2 也就是子节点到 uuu 的最长路径和次长路径之和
 #include&lt;iostream&gt;
-#include&lt;cs..." />
+#include&lt..." />
     <meta name="keywords" content="树的直径,树形dp,动态规划" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -23,7 +23,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://functioncoder2006.github.io">
-  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1637911153780" alt="">
+  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1638189393366" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -102,7 +102,7 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>考虑到最长路径会中转某一个节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 那么中转点为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mn>1</mn><mo>+</mo><mi>d</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">d1 + d2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord">2</span></span></span></span> 也就是子节点到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径和次长路径之和</p>
+                <p>考虑到 <strong>最长路径一定会中转某一个节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span></strong> 那么中转点为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mn>1</mn><mo>+</mo><mi>d</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">d1 + d2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">d</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mord">2</span></span></span></span> 也就是子节点到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最长路径和次长路径之和</p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
@@ -162,7 +162,7 @@ int main(void){
 
 }
 </code></pre>
-<p>还有一种写法，其实也是求最长和次长，只是不是很明显，但是一定覆盖了最长 + 次长这种情况</p>
+<p>还有一种写法，其实也是求最长和次长，只是不是很明显，<strong>但是一定覆盖了最长 + 次长这种情况</strong></p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
