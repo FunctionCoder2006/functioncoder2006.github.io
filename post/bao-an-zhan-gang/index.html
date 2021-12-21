@@ -1,105 +1,123 @@
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
+<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>保安站岗 | Gridea</title>
-<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1638191856896">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<title>
+    保安站岗 | JeffZhao&#39;s Blog
+</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1640091895951">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="保安站岗 | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://functioncoder2006.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+</head>
 
-    <meta name="description" content="战略游戏的加强版
-对于一个节点 uuu，先考虑放还是不放
-如果 uuu 放的话，那么子节点可能放，也可能不放
-如果 uuu 不放的话，那么 uuu 就需要考虑是被父节点覆盖还是被子节点覆盖，如果被父节点覆盖的话，那么子节点有可能放也有可能不..." />
-    <meta name="keywords" content="树形dp,动态规划" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10/dist/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-  </head>
-  <body>
+<body>
     <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://functioncoder2006.github.io">
-  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1638191856896" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://functioncoder2006.github.io">
+                <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1640091895951" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    JeffZhao&#39;s Blog
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              保安站岗
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-11-18
-              </span>
-              <span>
-                5 min read
-              </span>
-              
-                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-                  # 树形dp
-                </a>
-              
-                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-                  # 动态规划
-                </a>
-              
-            </div>
-            
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>战略游戏的加强版</p>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            保安站岗
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-11-18</time>
+                            
+                                <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_2">
+                            #树形dp
+                        </a>
+                                
+                                <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-banana">
+                            #动态规划
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>战略游戏的加强版</p>
 <p>对于一个节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，<strong>先考虑放还是不放</strong></p>
 <p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 放的话，那么子节点可能放，也可能不放</p>
 <p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 不放的话，<strong>那么 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 就需要考虑是被父节点覆盖还是被子节点覆盖</strong>，如果被父节点覆盖的话，那么子节点有可能放也有可能不放；如果没有被父节点覆盖掉，那就需要被至少一个子节点覆盖掉</p>
@@ -210,76 +228,80 @@ int main(void){
 
 </code></pre>
 
-              </div>
-              <div class="toc-container">
-                
-              </div>
-            </div>
-          </article>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">
+                                <h3 class="post-title">
+                                    三色二叉树题解
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://functioncoder2006.github.io/images/avatar.png?v=1640091895951)">
         </div>
+        <h1 class="id_card-title">
+            JeffZhao&#39;s Blog
+        </h1>
+        <h2 class="id_card-description">
+            我醉欲眠卿且去，明朝有意抱题来
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">
-              <h3 class="post-title">
-                三色二叉树题解
-              </h3>
-            </a>
-          </div>
-        
+        </div>
+    </div>
+    
+                                    
 
-        
+                </div>
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-      </div>
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
     </div>
-
     <script>
-      hljs.initHighlightingOnLoad()
-
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
         });
-      });
-
     </script>
-  </body>
+    
+</body>
+
 </html>

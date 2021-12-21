@@ -1,391 +1,527 @@
 <html>
-  <head>
-  <meta charset="utf-8" />
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>树形dp | Gridea</title>
-<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1638191856896">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<title>
+    树形dp | JeffZhao&#39;s Blog
+</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1640091895951">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="树形dp | Gridea - Atom Feed" href="https://functioncoder2006.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://functioncoder2006.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-  <meta name="description" content="温故而知新" />
-  </head>
-  <body>
+<body>
     <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://functioncoder2006.github.io">
-  <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1638191856896" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：# 树形dp
-            </h2> 
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://functioncoder2006.github.io">
+                <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1640091895951" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    JeffZhao&#39;s Blog
+                </h1>
+            </div>
         </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/shu-xing-dp-zong-jie/">
-        <h2 class="post-title">树形dp总结</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-27
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/fJoOFw0Uo/" class="post-tag">
-            # 总结
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/lian-he-quan-zhi-ti-jie/">
-        <h2 class="post-title">联合权值题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-26
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag">
-            # 前缀和
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/nearby-cows-g/">
-        <h2 class="post-title">Nearby Cows G</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-25
-        </span>
-        <span>
-          4 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/tkN9WuSwu/" class="post-tag">
-            # 容斥
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/zhong-shan-shi-xuan-2009shu/">
-        <h2 class="post-title">[中山市选2009]树</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-24
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/bao-an-zhan-gang/">
-        <h2 class="post-title">保安站岗</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-18
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">
-        <h2 class="post-title">三色二叉树题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/ran-se-ji-shu/">
-        <h2 class="post-title">染色计数</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          3 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag">
-            # 前缀和
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/shu-shang-ran-se-ti-jie/">
-        <h2 class="post-title">树上染色题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-17
-        </span>
-        <span>
-          5 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/er-cha-ping-guo-shu/">
-        <h2 class="post-title">二叉苹果树</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-15
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
-            # 背包
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://functioncoder2006.github.io/post/xuan-ke-ti-jie/">
-        <h2 class="post-title">选课题解</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2021-11-15
-        </span>
-        <span>
-          7 min read
-        </span>
-        
-          <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag">
-            # 树形dp
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag">
-            # 背包
-          </a>
-        
-          <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag">
-            # 动态规划
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-</div>
-
-        <div class="pagination-container">
-  
-  
-    <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/page/2" class="next-page">下一页</a>
-  
-</div>
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-  </body>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        树形dp</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/shu-xing-dp-zong-jie/">
+                        树形dp总结
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-27</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-success">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/fJoOFw0Uo/" class="post-tag i-tag
+                            i-tag-other_4">
+            #总结
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-banana">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/shu-xing-dp-zong-jie/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/lian-he-quan-zhi-ti-jie/">
+                        联合权值题解
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-26</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag i-tag
+                            i-tag-other_1">
+            #前缀和
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_4">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-other_1">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/lian-he-quan-zhi-ti-jie/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/tan-chi-de-jiu-tou-long/">
+                        贪吃的九头龙
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-26</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-success">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-other_3">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/tan-chi-de-jiu-tou-long/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/nearby-cows-g/">
+                        Nearby Cows G
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-25</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_4">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/tkN9WuSwu/" class="post-tag i-tag
+                            i-tag-error">
+            #容斥
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-other_1">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/nearby-cows-g/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/zhong-shan-shi-xuan-2009shu/">
+                        [中山市选2009]树
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-24</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-warning">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-info">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/zhong-shan-shi-xuan-2009shu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/bao-an-zhan-gang/">
+                        保安站岗
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-18</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_3">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-success">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/bao-an-zhan-gang/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">
+                        三色二叉树题解
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-17</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_1">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-error">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/san-se-er-cha-shu-ti-jie/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/ran-se-ji-shu/">
+                        染色计数
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-17</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/96Z6nyk6e/" class="post-tag i-tag
+                            i-tag-">
+            #前缀和
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-success">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-other_4">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/ran-se-ji-shu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/shu-shang-ran-se-ti-jie/">
+                        树上染色题解
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-17</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-warning">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-error">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/shu-shang-ran-se-ti-jie/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://functioncoder2006.github.io/post/er-cha-ping-guo-shu/">
+                        二叉苹果树
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2021-11-15</time>
+                    
+                        <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/" class="post-tag i-tag
+                            i-tag-other_3">
+            #树形dp
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/fOz-VVmc-/" class="post-tag i-tag
+                            i-tag-primary">
+            #背包
+        </a>
+                        
+                        <a href="https://functioncoder2006.github.io/tag/glIhAZULB/" class="post-tag i-tag
+                            i-tag-other_1">
+            #动态规划
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <!-- <div class="post-content-content">
+                                            
+                                        </div> -->
+                                        
+                                            <a class="btn btn-text" href="https://functioncoder2006.github.io/post/er-cha-ping-guo-shu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+    <div class="pagination-container">
+        
+                
+                    <a href="https://functioncoder2006.github.io/tag/yKsU5C7Xxs/page/2" class="page-btn btn">下一页</a>
+                    
+    </div>
+    
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://functioncoder2006.github.io/images/avatar.png?v=1640091895951)">
+        </div>
+        <h1 class="id_card-title">
+            JeffZhao&#39;s Blog
+        </h1>
+        <h2 class="id_card-description">
+            我醉欲眠卿且去，明朝有意抱题来
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
 </html>

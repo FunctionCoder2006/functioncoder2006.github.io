@@ -1,0 +1,255 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    分级 | JeffZhao&#39;s Blog
+</title>
+<link rel="shortcut icon" href="https://functioncoder2006.github.io/favicon.ico?v=1640091895951">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://functioncoder2006.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://functioncoder2006.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://functioncoder2006.github.io">
+                <img class="avatar" src="https://functioncoder2006.github.io/images/avatar.png?v=1640091895951" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    JeffZhao&#39;s Blog
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            分级
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-12-18</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>这道题可以说是一个套路题或者结论题吧</p>
+<p>结论是：最优解中的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 序列一定全都在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中出现过，这个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi><mi>x</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">yxc</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">x</span><span class="mord mathdefault">c</span></span></span></span> 给出了非常好的证明。这里不再赘述</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+
+using namespace std;
+
+const int N = 2100;
+
+int n , a[N] , c[N] , f[N][N]; //c[i]表示a[i]排序后的数组
+
+inline int get_up(void){
+    memset(f , 0x3f , sizeof(f));
+    int ans = (1 &lt;&lt; 30);
+    for(int k = 1 ; k &lt;= n ; ++ k){
+        f[0][k] = 0;
+    }
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        int maxn = (1 &lt;&lt; 30);
+        for(int j = 1 ; j &lt;= n ; ++ j){
+            maxn = min(maxn , f[i - 1][j]);
+            f[i][j] = min(f[i][j] , maxn + abs(c[j] - a[i]));
+        }
+    }
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        ans = min(ans , f[n][i]);
+    }
+    return ans;
+}
+inline int get_down(void){
+    memset(f , 0x3f , sizeof(f));
+    for(int k = 1 ; k &lt;= n ; ++ k){
+        f[0][k] = 0;
+    }
+    int ans = (1 &lt;&lt; 30);
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        int maxn = (1 &lt;&lt; 30);
+        for(int j = n ; j &gt;= 1 ; -- j){
+            maxn = min(maxn , f[i - 1][j]);
+            f[i][j] = min(f[i][j] , maxn + abs(c[j] - a[i]));
+        }
+    }
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        ans = min(ans , f[n][i]);
+    }
+    return ans;
+}
+
+int main(void){
+
+    cin &gt;&gt; n;
+
+    for(int i = 1 ; i &lt;= n ; ++ i){
+        cin &gt;&gt; a[i];
+        c[i] = a[i];
+    }
+
+    sort(c + 1 , c + 1 + n);
+
+    cout &lt;&lt; min(get_up() , get_down()) &lt;&lt; endl;
+
+    return 0;
+
+}
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://functioncoder2006.github.io/post/ni-ke-de-ren-wu/">
+                                <h3 class="post-title">
+                                    尼克的任务
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://functioncoder2006.github.io/images/avatar.png?v=1640091895951)">
+        </div>
+        <h1 class="id_card-title">
+            JeffZhao&#39;s Blog
+        </h1>
+        <h2 class="id_card-description">
+            我醉欲眠卿且去，明朝有意抱题来
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://functioncoder2006.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
