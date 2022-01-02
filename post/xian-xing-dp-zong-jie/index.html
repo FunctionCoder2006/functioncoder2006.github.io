@@ -120,6 +120,8 @@
 <p>我们通过贪心发现了一些性质，使得状态空间（可能的状态）得以缩小，进而<strong>避免高维度、多循环dp</strong>的转移</p>
 <p>通过贪心我们发现了一些转移根本就是不优的，从而剪去了一些不优的转移，将状态空间进行缩放，<strong>避免了大范围的循环</strong></p>
 <p><strong>当我们发现当前状态无法转移时，我们可以考虑给状态修改含义、添加一维度、运用等效手法进行放缩，最后进行更简单高效地转移</strong></p>
+<p>需要强调的是我们不一定要是用等效的手法进行放缩，也可以<strong>用等效的手法表示状态</strong>比如编辑距离</p>
+<p>当然，我们也需要考虑“不需要考虑每一次算的对不对，只需要知道最优解被算到了就行”</p>
 
           
           <p class="next-post">下一篇：
@@ -132,6 +134,26 @@
         
         <div class="comment">
           
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  var gitalk = new Gitalk({
+    clientID: '24c9d8dcb3fc59670105',
+    clientSecret: '0d7094637c8a3cc2ee0cc22ddd9ec7b4538788fd',
+    repo: 'Comments',
+    owner: 'FunctionCoder2006',
+    admin: ['FunctionCoder2006'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+          
+          
+        
         </div>
       </div>
     </div>
